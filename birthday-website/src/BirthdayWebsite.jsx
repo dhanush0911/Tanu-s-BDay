@@ -256,7 +256,7 @@ const Section1 = () => {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1, type: 'spring' }}
       >
-        Happy Birthday, My Love! 💖
+        Happy Birthday, Name! 💖
       </motion.h1>
       <motion.p
         initial={{ y: 50, opacity: 0 }}

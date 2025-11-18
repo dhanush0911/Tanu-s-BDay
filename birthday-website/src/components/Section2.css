@@ -1,0 +1,153 @@
+:root{
+  --card-w: 400px;
+  --card-h: 500px;
+  --radius: 20px;
+}
+
+/* .flip-card-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(180deg, #0f172a 0%, #071126 100%);
+} */
+
+.scene {
+  width: var(--card-w);
+  height: var(--card-h);
+  perspective: 1500px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* card is the rotating element (tilt + flip combined via inline style) */
+.card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  position: relative;
+  user-select: none;
+}
+
+/* faces */
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+  color: white;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.06);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* front */
+.card__face--front {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transform: rotateY(0deg);
+  text-align: center;
+  padding-top: 60px;
+}
+
+.card__face--front::before{
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+  animation: rotate 14s linear infinite;
+  pointer-events: none;
+}
+
+.glow-effect {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 40% 30%, rgba(255,255,255,0.25), transparent 40%);
+  border-radius: var(--radius);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.front-emoji {
+  font-size: 5rem;
+  margin: 0;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
+  z-index: 1;
+}
+
+.front-text {
+  font-size: 1.25rem;
+  z-index: 1;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  margin-top: 18px;
+}
+
+.sparkle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.9rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* back: rotate 180deg so it appears when card is rotated by +180deg */
+.card__face--back {
+  background: linear-gradient(135deg,#f093fb 0%, #f5576c 100%);
+  transform: rotateY(180deg);
+  position: relative;
+  padding: 40px;
+  text-align: center;
+}
+
+.glow-effect-back {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.18), transparent 55%);
+  border-radius: var(--radius);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.back-text {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  z-index: 1;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.35);
+  margin: 0;
+  padding: 10px;
+}
+
+.heart-pulse {
+  position: absolute;
+  bottom: 28px;
+  font-size: 2.4rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --card-w: 320px;
+    --card-h: 420px;
+  }
+  .front-emoji { font-size: 4rem; }
+  .front-text { font-size: 1.05rem; }
+  .back-text { font-size: 1.18rem; }
+}

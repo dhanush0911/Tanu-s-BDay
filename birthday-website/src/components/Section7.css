@@ -1,0 +1,237 @@
+.gift-section {
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 80px 20px;
+}
+
+.gift-section h2 {
+  color: white;
+  font-size: 3.5rem;
+  margin-bottom: 60px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.gift-box {
+  width: 320px;
+  height: 320px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+
+.gift-box:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+}
+
+.gift-ribbon-vertical {
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(to bottom, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+.gift-ribbon-horizontal {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(to right, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+.gift-bow {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle, #ffed4e 0%, #ffd700 70%);
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.7);
+  animation: bowFloat 3s ease-in-out infinite;
+}
+
+@keyframes bowFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+.gift-bow::before,
+.gift-bow::after {
+  content: '';
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background: radial-gradient(circle, #ffed4e 0%, #ffd700 70%);
+  border-radius: 50%;
+  top: 17px;
+}
+
+.gift-bow::before { left: -60px; }
+.gift-bow::after { right: -60px; }
+
+.gift-instruction {
+  color: white;
+  margin-top: 50px;
+  font-size: 1.8rem;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 999;
+  backdrop-filter: blur(5px);
+}
+
+.gift-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 100px 60px 80px 60px;
+  border-radius: 30px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  width: 90vw;
+  max-width: 900px;
+  max-height: fit-content;
+  overflow: hidden;
+  text-align: center;
+  border: 3px solid #ffd700;
+}
+
+.gift-message::before {
+  content: '🎁';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 70px;
+  animation: giftBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes giftBounce {
+  0%, 100% { 
+    transform: translateX(-50%) translateY(0); 
+  }
+  50% { 
+    transform: translateX(-50%) translateY(-10px); 
+  }
+}
+
+.gift-message h3 {
+  color: #e73c7e;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  text-shadow: 2px 2px 4px rgba(231, 60, 126, 0.2);
+  animation: titleSlideIn 0.6s ease-out;
+}
+
+@keyframes titleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gift-message p {
+  color: #333;
+  font-size: 1.6rem;
+  line-height: 2.5;
+  margin-bottom: 40px;
+  animation: contentFadeIn 0.8s ease-out 0.3s both;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gift-message button {
+  padding: 20px 50px;
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, #e73c7e 0%, #f093fb 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+  box-shadow: 0 10px 30px rgba(231, 60, 126, 0.4);
+  animation: buttonSlideUp 1s ease-out 0.6s both;
+}
+
+@keyframes buttonSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gift-message button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(231, 60, 126, 0.6);
+}
+
+.gift-message button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .gift-section h2 { font-size: 2.5rem; }
+  .gift-box {
+    width: 260px;
+    height: 260px;
+  }
+  .gift-instruction { font-size: 1.4rem; margin-top: 35px; }
+  .gift-message { 
+    padding: 80px 30px 60px 30px; 
+    width: 95vw;
+  }
+  .gift-message h3 { font-size: 2rem; }
+  .gift-message p { font-size: 1.3rem; }
+  .gift-message::before { font-size: 60px; }
+}

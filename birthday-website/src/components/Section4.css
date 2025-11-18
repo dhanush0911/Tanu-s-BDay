@@ -1,30 +1,213 @@
 .video-section {
-  flex-direction: column;
-  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, rgba(103, 58, 183, 0.4) 0%, rgba(244, 143, 177, 0.4) 100%);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
 }
 
 .video-container {
   text-align: center;
-  max-width: 800px;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.video-header {
+  margin-bottom: 40px;
+  position: relative;
 }
 
 .video-container h2 {
   color: white;
+  font-size: 3rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+}
+
+.music-notes {
   font-size: 2.5rem;
-  margin-bottom: 30px;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  color: #ffd700;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 25px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.4),
+    inset 0 0 40px rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.video-glow {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(circle, rgba(255, 105, 180, 0.3), transparent 70%);
+  border-radius: 35px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.video-border {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 30px;
+  background: linear-gradient(
+    45deg,
+    #ff69b4,
+    #ffd700,
+    #87ceeb,
+    #ff69b4
+  );
+  background-size: 300% 300%;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0.6;
 }
 
 .birthday-video {
   width: 100%;
-  max-width: 700px;
+  max-width: 100%;
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  display: block;
+  background: #000;
+  outline: none;
+}
+
+.video-caption-wrapper {
+  margin-top: 40px;
 }
 
 .video-caption {
   color: white;
-  margin-top: 20px;
-  font-size: 1.2rem;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 4px 20px rgba(255, 105, 180, 0.4);
+  margin-bottom: 15px;
+}
+
+.hearts {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.8));
+}
+
+/* Floating musical notes */
+.floating-note {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+}
+
+.note-1 {
+  left: 15%;
+  bottom: 20%;
+}
+
+.note-2 {
+  right: 15%;
+  bottom: 30%;
+}
+
+.note-3 {
+  left: 50%;
+  bottom: 25%;
+}
+
+/* Decorative sparkles */
+.video-section::before,
+.video-section::after {
+  content: '✨';
+  position: absolute;
+  font-size: 2rem;
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+.video-section::before {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.video-section::after {
+  top: 15%;
+  right: 10%;
+  animation-delay: 1.5s;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .video-section {
+    padding: 60px 15px;
+  }
+
+  .video-container h2 {
+    font-size: 2rem;
+  }
+
+  .music-notes {
+    font-size: 2rem;
+  }
+
+  .video-wrapper {
+    padding: 15px;
+  }
+
+  .video-caption {
+    font-size: 1.4rem;
+  }
+
+  .hearts {
+    font-size: 1.5rem;
+  }
+
+  .floating-note {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .video-caption {
+    font-size: 1.2rem;
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Confetti from 'react-confetti';
 import { motion } from 'framer-motion';
 import FloatingHearts from './components/FloatingHearts';
@@ -16,33 +16,9 @@ const BirthdayWebsite = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [candleBlown, setCandleBlown] = useState(false);
   const [showGift, setShowGift] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
-
-  const toggleMusic = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
 
   return (
     <div className="birthday-container">
-      <audio ref={audioRef} loop>
-        <source src="/romantic-song.mp3" type="audio/mpeg" />
-      </audio>
-
-      <motion.div
-        className="music-control"
-        onClick={toggleMusic}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        🎵 {isPlaying ? 'Pause Music' : 'Play Music'}
-      </motion.div>
-
       {showConfetti && (
         <Confetti
           width={window.innerWidth}
